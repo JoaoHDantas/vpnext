@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import API from '../../utils/axios';
-import '../styles/Login.css';
+import API from '../../../utils/axios';
+import '../../styles/Login.css';
 
 export default function Login() {
     const [username, setUsername] = useState('');
