@@ -3,12 +3,21 @@ import '../styles/Home.css'
 import logo from '../../../public/logo.png'
 // import rightchoice from '../../../public/rightchoice.svg'
 // import leftchoice from '../../../public/leftchoice.svg'
+import {FaXTwitter } from "react-icons/fa6";
+import { TiSocialInstagram , TiSocialFacebook, } from "react-icons/ti";
+import { FaReddit } from "react-icons/fa";
+import { BiPlusMedical } from "react-icons/bi";
+import { BiSearchAlt2 } from "react-icons/bi";
+import Image from 'next/image';
 function Home(){
+
+
+
     return(
         <div className='master-div'>
             <header className='header'>
                 <div className='left-header'>
-                    <a href="#" className='home'><img alt="" className='imagem' /></a>
+                    <a href="#" className='home'> <img src="/logo.png" width={50} height={50}/></a>
                     <a href="#" className='home'>Home</a>
                     <a href="#"><p>Sobre nós</p></a>
                 </div>
@@ -46,10 +55,10 @@ function Home(){
                 </div>
                <div className='redes-container'>
                     <div className='lista-redes'>
-                        <a href="https://www.instagram.com/joaod_tx/" ></a>
-                        <a href="#"></a>
-                        <a href="#"></a>
-                        <a href="#"></a>
+                        <a href="https://www.instagram.com/joaod_tx/" ><TiSocialInstagram></TiSocialInstagram></a>
+                        <a href="#"><FaXTwitter></FaXTwitter></a>
+                        <a href="#"><FaReddit></FaReddit></a>
+                        <a href="#"><TiSocialFacebook></TiSocialFacebook></a>
                     </div>
                         
                     

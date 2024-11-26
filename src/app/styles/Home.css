@@ -69,7 +69,7 @@ main{
     height: 600px;
     height: 80vh;
     display: flex;
-    background-image: url(../../../public/background-vp.jpg);
+    background-image: url(/background-vp.jpg);
     /* background-size: cover; */
     background-position: center top;
     background-color: black;
