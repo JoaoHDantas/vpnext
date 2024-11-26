@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import '../styles/Home.css'
 import logo from '../../../public/logo.png'
-import rightchoice from '../../../public/rightchoice.svg'
-import leftchoice from '../../../public/leftchoice.svg'
+// import rightchoice from '../../../public/rightchoice.svg'
+// import leftchoice from '../../../public/leftchoice.svg'
 function Home(){
     return(
         <div className='master-div'>
@@ -34,13 +34,13 @@ function Home(){
                 </div>
                 <div className="Main-content-area">
                     <div className='boxsize-button'>
-                    <a href = "/pixels/create" className='link-middle-right'><img src={leftchoice} alt="" />
+                    <a href = "#" className='link-middle-right'><img  alt="" />
                     </a>
                     </div>
                     
                     <img className='logo-middle'  alt="" />
                     <div className='boxsize-button'>
-                        <a href = "/pixels/" className='link-middle-right'><img src={rightchoice} alt="" />
+                        <a href = "#" className='link-middle-right'><img  alt="" />
                        </a>
                     </div>
                 </div>
