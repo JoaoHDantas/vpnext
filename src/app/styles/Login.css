@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Julius+Sans+One&display=swap');
+
+
+
+/* src/styles/Login.css */
+
+/* cores do programa:
+primária: #AE3C56
+secundária: #B11A3C
+terciária: #411D23
+tons escuros: #131418 */
+
+*{
+  font-family: 'Inria Sans';
+}
+
+body{
+  background-color: #131418;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+
+
+.login-title{
+  text-align: center;margin-bottom: 20px;color: black;font-weight: 800;padding-bottom: 18px; border-bottom: 3px solid #AE3C56;
+  font-size: 2.4rem;
+}
+.login-container {
+  margin-top: 50px;
+  max-width: 500px;
+  width: 375px;
+  margin: 0 auto;
+  padding: 30px 35px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  height: 500px;
+}
+
+.login-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: black;
+  font-weight: 800;
+}
+
+
+
+.login-container button {
+  width: 91%;
+  padding: 17px 36px;
+    /* border: none; */
+    border-radius: 5px;
+    background-color: #AE3C56;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 50px;
+    border: none;
+    border-bottom: 4px solid #411D23;
+    font-size: 18px;
+  
+}
+
+.login-container button:hover {
+  background-color: #B11A3C;
+  border-top: 4px solid  #520013;
+  border-bottom: none;
+}
+
+.form-login{
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.inputs-labels {
+  width: 91%;
+    margin-bottom: 12px;
+    /* padding: 21px 20px; */
+    /* border: 1px solid #ccc; */
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+}
+
+.inputs{
+  width: 100%;
+  /* padding: 10px; */
+  box-sizing: border-box;
+  padding: 10px;
+  height: 58px;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #131418;
+  color: white
+
+}
+
+h3{color: black;}
