@@ -1,8 +1,8 @@
 import axios from "axios";
-import { API_URL } from './config'
+
 
 const API = axios.create({
-  baseURL: API_URL,
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
   timeout: 5000,
   withCredentials: true, // Necessário se usar cookies para autenticação
 });

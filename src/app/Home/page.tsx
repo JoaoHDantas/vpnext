@@ -9,10 +9,10 @@ import { FaReddit } from "react-icons/fa";
 import { BiPlusMedical } from "react-icons/bi";
 import { BiSearchAlt2 } from "react-icons/bi";
 import Image from 'next/image';
+import {Avatar} from "@nextui-org/react";
+
+
 function Home(){
-
-
-
     return(
         <div className='master-div'>
             <header className='header'>
@@ -59,6 +59,7 @@ function Home(){
                         <a href="#"><FaXTwitter></FaXTwitter></a>
                         <a href="#"><FaReddit></FaReddit></a>
                         <a href="#"><TiSocialFacebook></TiSocialFacebook></a>
+                        <a href="#"><Avatar name="João" /></a>
                     </div>
                         
                     
