@@ -59,7 +59,6 @@ function Home(){
                         <a href="#"><FaXTwitter></FaXTwitter></a>
                         <a href="#"><FaReddit></FaReddit></a>
                         <a href="#"><TiSocialFacebook></TiSocialFacebook></a>
-                        <a href="#"><Avatar name="João" /></a>
                     </div>
                         
                     
