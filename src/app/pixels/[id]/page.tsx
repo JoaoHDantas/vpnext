@@ -13,12 +13,6 @@ interface Pixel {
   created_at: string;
 }
 
-async function getParams() {
-  // Simula a resolução de `params`
-  const params = await import("next/dist/server/request/params.browser.js");
-  return params;
-}
-
 export default function PixelDetail({ params }: { params: Promise<{ id: string }> }) {
   const [pixel, setPixel] = useState<Pixel | null>(null);
   const [loading, setLoading] = useState(true);
