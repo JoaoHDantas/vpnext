@@ -1,4 +1,4 @@
-"use client"; // Diretiva para tornar este um componente de cliente
+"use client";
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
