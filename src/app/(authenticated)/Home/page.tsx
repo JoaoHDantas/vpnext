@@ -15,28 +15,6 @@ import Link from 'next/link'
 function Home(){
     return(
         <div className='master-div'>
-            <header className='header'>
-                <div className='left-header'>
-                    <Link href="/Home" className='home'> <img src="/logo.png" width={50} height={50}/></Link>
-                    <Link href="/Home" className='home'>Home</Link>
-                    <Link href="/Home"><p>Sobre nós</p></Link>
-                </div>
-                <div className='right-header'>
-                    <a href="#"><p>Suporte</p></a>
-                </div>
-            </header>
-            <nav className='navbar'>
-                <div className='links-navbar'>
-                    <a href="#" className='links-escolha'>agentes</a>
-                    <a href="#" className='links-escolha'>mapas</a>
-                    <a href="#" className='links-escolha'>top ajudantes</a>
-                    <a href = "#" className='links-escolha'>comunidade</a>
-                </div>
-                <div>
-                    <div></div>
-                    <a href="#">Hi, joao</a>
-                </div>
-            </nav>
             <main className='main'>
                 <div className='background'>
 
@@ -60,13 +38,8 @@ function Home(){
                         <a href="#"><FaReddit></FaReddit></a>
                         <a href="#"><TiSocialFacebook></TiSocialFacebook></a>
                     </div>
-                        
-                    
                </div>
             </main>
-
-            
-            
         </div>
     )
 }
