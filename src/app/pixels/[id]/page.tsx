@@ -2,75 +2,58 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { use } from "react"; // Novo import para resolver `params`
 import API from "../../../utils/axios";
 
 interface Pixel {
   id: number;
   titulo: string;
   descricao: string;
-  upload: string;
-  created_at: string;
 }
 
-export default function PixelDetail({ params }: { params: Promise<{ id: string }> }) {
-  const [pixel, setPixel] = useState<Pixel | null>(null);
+export default function PixelList() {
+  const [pixels, setPixels] = useState<Pixel[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
   const router = useRouter();
 
-  const resolvedParams = use(params); // Resolve o `params` usando o hook `use`
-
   useEffect(() => {
-    const id = resolvedParams?.id;
-
-    if (!id) {
-      console.error("ID não fornecido na URL.");
-      router.push("/pixels");
-      return;
-    }
-
-    const fetchPixel = async () => {
-      setLoading(true);
-      setError(false);
-
+    const fetchPixels = async () => {
       try {
-        const response = await API.get(`/pixels/${id}/`);
-        setPixel(response.data);
+        const response = await API.get("/pixels/");
+        setPixels(response.data.results);
       } catch (err) {
-        console.error("Erro ao buscar detalhes do pixel:", err);
+        console.error("Erro ao buscar pixels:", err);
         setError(true);
-        router.push("/pixels");
       } finally {
         setLoading(false);
       }
     };
 
-    fetchPixel();
-  }, [resolvedParams?.id, router]);
+    fetchPixels();
+  }, []);
 
   if (loading) {
-    return <p>Carregando...</p>;
+    return <p>Carregando lista de pixels...</p>;
   }
 
-  if (error || !pixel) {
-    return <p>Erro: Pixel não encontrado ou houve um problema ao carregar os dados.</p>;
+  if (error) {
+    return <p>Erro ao carregar a lista de pixels.</p>;
   }
 
   return (
     <div>
-      <h1>Detalhes do Pixel</h1>
-      <h2>{pixel.titulo}</h2>
-      <p>{pixel.descricao}</p>
-      {pixel.upload && (
-        <div>
-          <a href={pixel.upload} download>
-            Baixar Upload
-          </a>
-        </div>
-      )}
-      <small>Criado em: {new Date(pixel.created_at).toLocaleDateString()}</small>
+      <h1>Lista de Pixels</h1>
+      <ul>
+        {pixels.map((pixel) => (
+          <li key={pixel.id}>
+            <h2>{pixel.titulo}</h2>
+            <p>{pixel.descricao}</p>
+            <button onClick={() => router.push(`/pixels/${pixel.id}`)}>Ver Detalhes</button>
+            <button onClick={() => router.push(`/pixels/${pixel.id}/edit`)}>Editar</button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
