@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import '../styles/Home.css'
+import '../../styles/Home.css'
 import logo from '../../../public/logo.png'
 // import rightchoice from '../../../public/rightchoice.svg'
 // import leftchoice from '../../../public/leftchoice.svg'
