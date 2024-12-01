@@ -5,6 +5,7 @@ import API from "../../../utils/axios";
 import Image from "next/image";
 import Link from "next/link";
 import { FaTrash } from "react-icons/fa";
+import '../../styles/pixels.css'
 
 interface Pixel {
   id: number;
