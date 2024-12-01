@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import API from "../../utils/axios";
+import API from "../../../utils/axios";
 
 interface Pixel {
   id: number;
@@ -44,7 +44,6 @@ export default function PixelList() {
   return (
     <div>
       <h1>Lista de Pixels</h1>
-      <button onClick={() => router.push("/pixels/create")}>Criar Novo Pixel</button>
       <ul>
         {pixels.map((pixel) => (
           <li key={pixel.id}>
