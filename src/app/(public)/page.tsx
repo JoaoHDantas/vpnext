@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import API from '../utils/axios';
-import './styles/Login.css';
+import API from '../../utils/axios';
+import '../styles/Login.css';
 import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Ícones para mostrar e ocultar a senha
 
 export default function Login() {

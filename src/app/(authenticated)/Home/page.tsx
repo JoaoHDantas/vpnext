@@ -10,16 +10,16 @@ import { BiPlusMedical } from "react-icons/bi";
 import { BiSearchAlt2 } from "react-icons/bi";
 import Image from 'next/image';
 import {Avatar} from "@nextui-org/react";
-
+import Link from 'next/link'
 
 function Home(){
     return(
         <div className='master-div'>
             <header className='header'>
                 <div className='left-header'>
-                    <a href="#" className='home'> <img src="/logo.png" width={50} height={50}/></a>
-                    <a href="#" className='home'>Home</a>
-                    <a href="#"><p>Sobre nós</p></a>
+                    <Link href="/Home" className='home'> <img src="/logo.png" width={50} height={50}/></Link>
+                    <Link href="/Home" className='home'>Home</Link>
+                    <Link href="/Home"><p>Sobre nós</p></Link>
                 </div>
                 <div className='right-header'>
                     <a href="#"><p>Suporte</p></a>
