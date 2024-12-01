@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import API from "../../utils/axios";
+import API from "../../../utils/axios";
 import Image from "next/image";
 import Link from "next/link";
 import { FaTrash } from "react-icons/fa";

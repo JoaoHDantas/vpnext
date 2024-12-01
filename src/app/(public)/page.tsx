@@ -19,7 +19,7 @@ export default function Login() {
             localStorage.setItem('access_token', response.data.access);
             localStorage.setItem('refresh_token', response.data.refresh);
             API.defaults.headers['Authorization'] = 'Bearer ' + response.data.access;
-            router.push('/Home');
+            router.push('/home');
         } catch (error) {
             console.error('Erro ao fazer login:', error);
         }

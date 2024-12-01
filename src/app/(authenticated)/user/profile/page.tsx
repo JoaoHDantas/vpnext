@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import API from '../../../../utils/axios';
 
 type UserProfile = {
   id: number;
@@ -11,7 +12,7 @@ type UserProfile = {
     image: string | null;
     description: string;
     nickname: string;
-  } | null; // Aqui você pode tornar o profile opcional
+  } | null;
 };
 
 export default function ProfilePage() {
@@ -21,23 +22,22 @@ export default function ProfilePage() {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const token = localStorage.getItem('access_token'); // Verifique se o token está correto
+      const token = localStorage.getItem('access_token');
       if (!token) {
         console.error('Token não encontrado!');
-        router.push('/login'); // Redirecionar para a página de login se não houver token
+        router.push('/'); // Redirecionar para a página de login se não houver token
         return;
       }
 
       try {
-        const response = await fetch('http://localhost:8000/api/users/me/', {
+        const response = await API.get('/users/me/', {
           headers: {
-            Authorization: `Bearer ${token}`, // Passando o token corretamente no cabeçalho
+            Authorization: `Bearer ${token}`,
           },
         });
 
-        if (response.ok) {
-          const data = await response.json();
-          setUser(data);
+        if (response.status === 200) {
+          setUser(response.data);
         } else {
           console.error('Erro ao buscar os dados do usuário: ', response.status);
         }
@@ -49,18 +49,18 @@ export default function ProfilePage() {
     };
 
     fetchUser();
-  }, []);
+  }, [router]);
 
   if (loading) return <div>Carregando...</div>;
 
   if (!user) return <div>Erro: Não foi possível carregar os dados do usuário.</div>;
 
-  // Certifique-se de que o profile não seja null antes de acessar as propriedades
   const { profile } = user;
 
   return (
     <div>
-      <h1>{profile?.nickname || user.username}</h1> {/* Usando o optional chaining para evitar erro */}
+      <h1>Login name:{user.username}</h1>
+      <h1>{profile?.nickname || user.username}</h1>
       <p>Email: {user.email}</p>
       <p>Descrição: {profile?.description || 'Sem descrição'}</p>
       {profile?.image && (
