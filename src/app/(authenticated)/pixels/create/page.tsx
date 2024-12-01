@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import API from "../../../utils/axios";
+import API from "../../../../utils/axios";
 
 export default function CreatePixel() {
   const [titulo, setTitulo] = useState("");

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { use } from "react"; // Novo import para resolver `params`
-import API from "../../../../utils/axios";
+import API from "../../../../../utils/axios";
 
 interface Pixel {
   titulo: string;
