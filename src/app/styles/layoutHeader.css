@@ -13,7 +13,6 @@ a{
     color: white;
 }
 .header{
-    width: 100vw;
     display: flex;
     height: 73px;
     background-color: black;
