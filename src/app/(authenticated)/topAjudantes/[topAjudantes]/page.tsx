@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import API from "../../../../utils/axios";
 import "../../../styles/detailTopAjudante.css";
+import { FaStreetView } from "react-icons/fa";
 
 // Define a interface para o tipo TopAjudantes.
 interface TopAjudantes {
@@ -45,32 +46,41 @@ const ReadTopAjudante: React.FC = () => {
 
   return (
     <div className="read-ajudante-container">
-      <h1>Detalhes do Ajudante</h1>
-      <button
-        type="button"
-        className="back-button"
-        onClick={() => router.push("/topAjudantes")}
-      >
-        Voltar para Listagem
-      </button>
-      <button
-        type="button"
-        className="back-button"
-        onClick={() => router.push(`/topAjudantes/${topAjudantesId}/edit`)}
-      >
-        Editar Ajudante
-      </button>
-      <h2>{nicknameAjudante}</h2>
-      <p>Pontos: {postPoints ?? 0}</p>
-      {profilePicture ? (
-        <img
-          src={profilePicture}
-          alt={nicknameAjudante}
-          className="ajudante-image"
-        />
-      ) : (
-        <div className="placeholder-picture">Sem Foto</div>
-      )}
+      <div id="headerDetail">
+          <h1><FaStreetView />Detalhes do ajudante</h1>
+          <div id="bottom-linha"></div>
+        </div>
+      <div className="content-container">
+        <div id="bg-nick">
+          <h2>{nicknameAjudante}</h2>
+        </div>
+        
+        <p>Pontos: {postPoints ?? 0}</p>
+        {profilePicture ? (
+          <img
+            src={profilePicture}
+            alt={nicknameAjudante}
+            className="ajudante-image"
+          />
+        ) : (
+          <div className="placeholder-picture">Sem Foto</div>
+        )}
+        <button
+          type="button"
+          className="back-button"
+          onClick={() => router.push("/topAjudantes")}
+        >
+          Voltar para Listagem
+        </button>
+        <button
+          type="button"
+          className="back-button"
+          onClick={() => router.push(`/topAjudantes/${topAjudantesId}/edit`)}
+        >
+          Editar Ajudante
+        </button>
+      </div>
+
     </div>
   );
 };
