@@ -1,69 +1,47 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useSearchParams } from "next/navigation"; // Importando o hook useSearchParams
-import API from "../../../utils/axios"; // Supondo que sua configuração axios esteja aqui
+import API from "../../../utils/axios"; // Ajuste conforme o caminho real
 
 interface Comment {
   id: number;
-  texto: string;
-  autor: string;
+  comentario: string;
+  avaliacao: number;
+  pixelPost: number;
 }
 
-interface Pixel {
-  id: number;
-  titulo: string;
-  descricao: string;
-}
-
-export default function CommentList() {
+const CommentPage: React.FC<{ pixelPostId: number }> = ({ pixelPostId }) => {
   const [comments, setComments] = useState<Comment[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-  
-  const searchParams = useSearchParams(); // Usando o hook useSearchParams
-  const pixelId = searchParams.get("id"); // Acessando o parâmetro da URL
-
   const router = useRouter();
 
   useEffect(() => {
-    const fetchComments = async () => {
-      if (!pixelId) return;
-
-      try {
-        const response = await API.get(`/pixels/${pixelId}/comments/`);
-        setComments(response.data.results);
-      } catch (err) {
-        console.error("Erro ao buscar comentários:", err);
-        setError(true);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchComments();
-  }, [pixelId]);
-
-  if (loading) {
-    return <p>Carregando comentários...</p>;
-  }
-
-  if (error) {
-    return <p>Erro ao carregar os comentários.</p>;
-  }
+    // Busca os comentários associados ao pixelPostId
+    API.get(`/api/interaction/?pixelPost=${pixelPostId}`)
+      .then((response) => {
+        setComments(response.data);
+      })
+      .catch((error) => {
+        console.error("Erro ao carregar comentários:", error);
+      });
+  }, [pixelPostId]);
 
   return (
-    <div>
-      <h1>Comentários para o Pixel</h1>
+    <div className="comment-page">
+      <h1>Comentários</h1>
+      <button onClick={() => router.push(`/comment/create`)} className="add-comment-button">
+        Adicionar Comentário
+      </button>
       <ul>
         {comments.map((comment) => (
           <li key={comment.id}>
-            <p><strong>{comment.autor}</strong>: {comment.texto}</p>
+            <p>{comment.comentario}</p>
+            <small>Avaliação: {comment.avaliacao}</small>
           </li>
         ))}
       </ul>
-      <button onClick={() => router.push(`/pixels/${pixelId}/add-comment`)}>Adicionar Comentário</button>
     </div>
   );
-}
+};
+
+export default CommentPage;

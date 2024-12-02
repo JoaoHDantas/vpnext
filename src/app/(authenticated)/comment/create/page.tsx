@@ -2,61 +2,55 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import API from "../../../../utils/axios";
+import API from "../../../../utils/axios"; // Caminho para seu Axios
 
-export default function CreateComment() {
+const CreateCommentPage = ({ pixelPostId }: { pixelPostId: number }) => {
   const [comentario, setComentario] = useState<string>("");
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<boolean>(false);
+  const [avaliacao, setAvaliacao] = useState<number>(0);
   const router = useRouter();
-  
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
 
-    if (!comentario) return;
+  const handleCreateComment = () => {
+    const payload = {
+      comentario,
+      avaliacao,
+      pixelPost: pixelPostId,
+    };
 
-    try {
-      setLoading(true);
-      setError(false);
-
-      // Envia o comentário para a API
-      const response = await API.post(`/comments/`, {
-        texto: comentario,
-        autor: "Autor Exemplo", // Ou você pode capturar isso do usuário, se necessário
-        pixel: 1, // Substitua com o ID do pixel relacionado ao comentário
+    API.post("/api/interaction/", payload)
+      .then(() => {
+        // Redireciona de volta à página de comentários ou onde desejar
+        router.push(`/comment`);
+      })
+      .catch((error) => {
+        console.error("Erro ao criar comentário:", error);
       });
-
-      // Redireciona para a página de detalhes do pixel após a criação do comentário
-      router.push(`/pixels/${response.data.pixel.id}`);
-
-    } catch (err) {
-      console.error("Erro ao criar comentário:", err);
-      setError(true);
-    } finally {
-      setLoading(false);
-    }
   };
 
   return (
-    <div>
-      <h1>Criar Novo Comentário</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="comentario">Comentário</label>
-          <textarea
-            id="comentario"
-            value={comentario}
-            onChange={(e) => setComentario(e.target.value)}
-            rows={5}
-            placeholder="Digite seu comentário"
-            required
-          />
-        </div>
-        <button type="submit" disabled={loading}>
-          {loading ? "Enviando..." : "Criar Comentário"}
-        </button>
-      </form>
-      {error && <p>Ocorreu um erro ao tentar criar o comentário.</p>}
+    <div className="create-comment-page">
+      <h1>Criar Comentário</h1>
+      <textarea
+        placeholder="Escreva seu comentário"
+        value={comentario}
+        onChange={(e) => setComentario(e.target.value)}
+      />
+      <select
+        value={avaliacao}
+        onChange={(e) => setAvaliacao(Number(e.target.value))}
+      >
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <button onClick={handleCreateComment}>Salvar Comentário</button>
+      <button onClick={() => router.back()} className="cancel-button">
+        Cancelar
+      </button>
     </div>
   );
-}
+};
+
+export default CreateCommentPage;
