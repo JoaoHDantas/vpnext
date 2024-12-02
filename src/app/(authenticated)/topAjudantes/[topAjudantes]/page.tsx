@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import API from "../../../../utils/axios";
-import "../../../styles/ReadTopAjudante.css";
+import "../../../styles/detailTopAjudante.css";
 
 // Define a interface para o tipo TopAjudantes.
 interface TopAjudantes {
