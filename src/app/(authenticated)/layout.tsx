@@ -18,7 +18,7 @@ export default function RootLayout({
       <body>
         <header className='header'>
           <div className='left-header'>
-            <Link href="/home" className='home'> <img src="/logo.png" width={50} height={50} /></Link>
+            <Link href="/home" className='home'> <img src="/logo.png" width={50} height={40} /></Link>
             <Link href="/home" className='home'>Home</Link>
             <Link href="/home"><p>Sobre nós</p></Link>
           </div>
