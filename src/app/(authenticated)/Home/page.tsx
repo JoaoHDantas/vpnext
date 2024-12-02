@@ -19,16 +19,16 @@ function Home(){
                 <div className='background'>
                 </div>
                 <div className="Main-content-area">
+
                     <div className='boxsize-button'>
-                        <Link href = "/pixels/create/" className='link-middle-right'><BiPlusMedical/><img src="/leftchoice.svg" alt="" />
-                        
-                        </Link>
+                        <Link href = "/pixels/create/" className='link-middle-right'>
+                        <img src="/leftchoice.svg" alt="" /><BiPlusMedical color='#AE3C56' size="80px" className="button icon-overlay"/></Link>
                     </div>
+
                     <img className='logo-middle'  alt="" src="/logo.png" />
                     <div className='boxsize-button'>
-                        <Link href = "/pixels/" className='link-middle-right'><BiSearchAlt2/><img src="/rightchoice.svg" alt="" />
-                        
-                       </Link>
+                        <Link href = "/pixels/" className='link-middle-right'>
+                        <img src="/rightchoice.svg" alt=""/><BiSearchAlt2 color='#AE3C56' size="80px" className="button icon-overlay"/></Link>
                     </div>
                 </div>
                <div className='redes-container'>
