@@ -17,7 +17,8 @@ const CommentPage: React.FC<{ pixelPostId: number }> = ({ pixelPostId }) => {
 
   useEffect(() => {
     // Busca os comentários associados ao pixelPostId
-    API.get(`/api/interaction/?pixelPost=${pixelPostId}`)
+    console.log("pixelPostId:", pixelPostId);
+    API.get(`/interaction/?pixelPost=${pixelPostId}`)
       .then((response) => {
         setComments(response.data);
       })
