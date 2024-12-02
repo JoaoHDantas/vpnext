@@ -35,7 +35,7 @@ export default function RootLayout({
           </div>
           <div>
             <div></div>
-            <a href="#">Hi, joao</a>
+            <a href="/user/profile">Hi, joao</a>
           </div>
         </nav>
         {children}
