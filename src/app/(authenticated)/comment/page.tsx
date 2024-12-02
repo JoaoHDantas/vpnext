@@ -14,19 +14,6 @@ const CommentPage: React.FC = () => {
   const [comments, setComments] = useState<Comment[]>([]);
   const [pixelPostId, setPixelPostId] = useState<number | null>(null);
 
-<<<<<<< Updated upstream
-  useEffect(() => {
-    // Busca os comentários associados ao pixelPostId
-    console.log("pixelPostId:", pixelPostId);
-    API.get(`/interaction/?pixelPost=${pixelPostId}`)
-      .then((response) => {
-        setComments(response.data);
-      })
-      .catch((error) => {
-        console.error("Erro ao carregar comentários:", error);
-      });
-  }, [pixelPostId]);
-=======
   const handlePixelPostSelect = async (id: number) => {
     setPixelPostId(id);
 
@@ -38,7 +25,6 @@ const CommentPage: React.FC = () => {
       console.error("Erro ao carregar comentários:", error);
     }
   };
->>>>>>> Stashed changes
 
   return (
     <div className="comment-page">
