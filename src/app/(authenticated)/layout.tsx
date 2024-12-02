@@ -15,6 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+       <head>
+        <link rel="icon" href="/favicon.ico" />
+      </head>
       <body>
         <header className='header'>
           <div className='left-header'>
@@ -35,7 +38,7 @@ export default function RootLayout({
           </div>
           <div>
             <div></div>
-            <a href="/user/profile">Hi, joao</a>
+            <a href="/user/profile">Hi, user!</a>
           </div>
         </nav>
         {children}

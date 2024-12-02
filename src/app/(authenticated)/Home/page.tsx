@@ -33,10 +33,10 @@ function Home(){
                 </div>
                <div className='redes-container'>
                     <div className='lista-redes'>
-                        <a href="https://www.instagram.com/joaod_tx/" ><TiSocialInstagram></TiSocialInstagram></a>
-                        <a href="#"><FaXTwitter></FaXTwitter></a>
-                        <a href="#"><FaReddit></FaReddit></a>
-                        <a href="#"><TiSocialFacebook></TiSocialFacebook></a>
+                        <a href="https://www.instagram.com/joaod_tx/"><TiSocialInstagram></TiSocialInstagram></a>
+                        <a href="https://www.instagram.com/joaod_tx/"><FaXTwitter></FaXTwitter></a>
+                        <a href="https://www.instagram.com/joaod_tx/"><FaReddit></FaReddit></a>
+                        <a href="https://www.instagram.com/joaod_tx/"><TiSocialFacebook></TiSocialFacebook></a>
                     </div>
                </div>
             </main>

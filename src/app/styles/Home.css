@@ -52,7 +52,15 @@ main{
     font-size: 28px;
 }
 
-
+.lista-redes a{
+    display: flex;
+    align-items: center;
+    background-color: #0a1012;
+    color: #ae3c56;
+    padding: 12px;
+    border-radius: 50px;
+    box-shadow: 0px 0px 5px #ae3c56;
+}
 .icon{
     padding: 10px;
     background-color: white;
