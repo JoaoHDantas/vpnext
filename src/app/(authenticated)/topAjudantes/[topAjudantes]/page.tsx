@@ -53,6 +53,13 @@ const ReadTopAjudante: React.FC = () => {
       >
         Voltar para Listagem
       </button>
+      <button
+        type="button"
+        className="back-button"
+        onClick={() => router.push(`/topAjudantes/${topAjudantesId}/edit`)}
+      >
+        Editar Ajudante
+      </button>
       <h2>{nicknameAjudante}</h2>
       <p>Pontos: {postPoints ?? 0}</p>
       {profilePicture ? (

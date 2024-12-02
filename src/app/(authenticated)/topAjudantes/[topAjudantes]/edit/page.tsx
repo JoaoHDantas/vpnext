@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 import API from "../../../../../utils/axios";
 import "../../../../styles/EditTopAjudante.css";
 
@@ -13,23 +13,29 @@ interface TopAjudantes {
   postPoints: number | null;
 }
 
-// Define o componente EditTopAjudante.
+// Define o componente de edição de TopAjudante.
 const EditTopAjudante: React.FC = () => {
   const router = useRouter();
-  const pathname = usePathname();
+  const params = useParams();
 
-  // Extraindo o ID do topAjudantes diretamente da URL.
-  const topAjudantesId = pathname.split("/").pop();
+  // ID do ajudante obtido dos parâmetros da URL.
+  const topAjudantesId = params?.topAjudantes;
 
   // Estados para os dados do topAjudantes.
   const [nicknameAjudante, setNicknameAjudante] = useState<string>("");
   const [profilePicture, setProfilePicture] = useState<File | null>(null);
   const [currentPicture, setCurrentPicture] = useState<string | null>(null);
   const [postPoints, setPostPoints] = useState<number | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
-  // Busca os detalhes do topAjudantes ao carregar o componente.
+  // Busca os detalhes do TopAjudante ao carregar o componente.
   useEffect(() => {
-    if (!topAjudantesId) return;
+    if (!topAjudantesId) {
+      console.error("ID do ajudante não fornecido.");
+      setError(true);
+      return;
+    }
 
     API.get(`/topAjudantes/${topAjudantesId}/`)
       .then((response) => {
@@ -40,7 +46,9 @@ const EditTopAjudante: React.FC = () => {
       })
       .catch((error) => {
         console.error("Erro ao buscar detalhes do ajudante:", error);
-      });
+        setError(true);
+      })
+      .finally(() => setLoading(false));
   }, [topAjudantesId]);
 
   // Lida com a mudança de imagem.
@@ -54,6 +62,11 @@ const EditTopAjudante: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (!topAjudantesId) {
+      alert("ID do ajudante não encontrado. Não é possível salvar.");
+      return;
+    }
+
     try {
       const formData = new FormData();
       formData.append("nicknameAjudante", nicknameAjudante);
@@ -64,29 +77,30 @@ const EditTopAjudante: React.FC = () => {
         formData.append("profile_picture", profilePicture);
       }
 
-      if (topAjudantesId) {
-        // Editar um ajudante existente.
-        await API.put(`/topAjudantes/${topAjudantesId}/`, formData, {
-          headers: { "Content-Type": "multipart/form-data" },
-        });
-        alert("Ajudante atualizado com sucesso!");
-      } else {
-        // Criar um novo ajudante.
-        await API.post(`/topAjudantes/`, formData, {
-          headers: { "Content-Type": "multipart/form-data" },
-        });
-        alert("Ajudante criado com sucesso!");
-      }
-
+      await API.put(`/topAjudantes/${topAjudantesId}/`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      alert("Ajudante atualizado com sucesso!");
       router.push("/topAjudantes");
     } catch (error) {
       console.error("Erro ao salvar ajudante:", error);
+      alert("Erro ao salvar o ajudante. Tente novamente.");
     }
   };
 
+  if (loading) return <p>Carregando...</p>;
+
+  if (error)
+    return (
+      <p>
+        Erro: Não foi possível carregar os dados do ajudante. Verifique se o ID
+        é válido ou tente novamente.
+      </p>
+    );
+
   return (
     <div className="edit-ajudante-container">
-      <h1>{topAjudantesId ? "Editar Ajudante" : "Criar Novo Ajudante"}</h1>
+      <h1>Editar Ajudante</h1>
       <form onSubmit={handleSubmit}>
         <div>
           {/* Exibe a imagem atual do ajudante, se disponível. */}
@@ -106,15 +120,17 @@ const EditTopAjudante: React.FC = () => {
           placeholder="Nickname"
           value={nicknameAjudante}
           onChange={(e) => setNicknameAjudante(e.target.value)}
+          required
         />
         <input
           type="number"
           placeholder="Pontos"
           value={postPoints || ""}
           onChange={(e) => setPostPoints(Number(e.target.value))}
+          required
         />
         <button className="save-button" type="submit">
-          {topAjudantesId ? "Salvar" : "Criar"}
+          Salvar
         </button>
         <button
           type="button"

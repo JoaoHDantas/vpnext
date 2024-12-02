@@ -89,7 +89,7 @@ const TopAjudantesList: React.FC = () => {
               </a>
             </Link>
             <div className="actions">
-              <Link href={`/topAjudantes/${topAjudante.id}/edit`} legacyBehavior>
+              <Link href={`/topAjudantes/${topAjudante.id}/edit/`} legacyBehavior>
                 <a className="edit-button">
                   <AiFillEdit />
                 </a>
