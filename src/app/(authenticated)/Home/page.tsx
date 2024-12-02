@@ -17,18 +17,18 @@ function Home(){
         <div className='master-div'>
             <main className='main'>
                 <div className='background'>
-
                 </div>
                 <div className="Main-content-area">
                     <div className='boxsize-button'>
-                    <a href = "#" className='link-middle-right'><img  alt="" />
-                    </a>
+                        <Link href = "/pixels/create/" className='link-middle-right'><BiPlusMedical/><img src="/leftchoice.svg" alt="" />
+                        
+                        </Link>
                     </div>
-                    
-                    <img className='logo-middle'  alt="" />
+                    <img className='logo-middle'  alt="" src="/logo.png" />
                     <div className='boxsize-button'>
-                        <a href = "#" className='link-middle-right'><img  alt="" />
-                       </a>
+                        <Link href = "/pixels/" className='link-middle-right'><BiSearchAlt2/><img src="/rightchoice.svg" alt="" />
+                        
+                       </Link>
                     </div>
                 </div>
                <div className='redes-container'>
