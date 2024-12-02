@@ -60,7 +60,7 @@ const EditTopAjudante: React.FC = () => {
       if (postPoints !== null) {
         formData.append("postPoints", postPoints.toString());
       }
-      if (profilePicture && profilePicture !== currentPicture) {
+      if (profilePicture) {
         formData.append("profile_picture", profilePicture);
       }
 
