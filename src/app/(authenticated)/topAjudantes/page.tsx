@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import API from "../../../utils/axios";
 import Link from "next/link";
@@ -8,6 +7,7 @@ import { FaPlus } from "react-icons/fa";
 import { FaHandsHelping } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { AiFillEdit } from "react-icons/ai";
+import { Pagination } from "@nextui-org/react"; // Importação do componente Pagination
 
 // Define a interface para o tipo TopAjudantes.
 interface TopAjudantes {
@@ -17,45 +17,61 @@ interface TopAjudantes {
   postPoints: number | null;
 }
 
+// Define a interface para os links de paginação da API.
+interface PaginationMeta {
+  total: number; // Total de itens
+  page: number; // Página atual
+  pageSize: number; // Itens por página
+}
+
 // Define o componente TopAjudantesList.
 const TopAjudantesList: React.FC = () => {
-  // Define o estado para armazenar a lista de ajudantes.
   const [topAjudantes, setTopAjudantes] = useState<TopAjudantes[]>([]);
+  const [paginationMeta, setPaginationMeta] = useState<PaginationMeta>({
+    total: 0,
+    page: 1,
+    pageSize: 5,
+  });
+
+  // Função para buscar dados da API.
+  const fetchTopAjudantes = async (page: number) => {
+    try {
+      const response = await API.get(`/topAjudantes/?page=${page}`);
+      setTopAjudantes(response.data.results);
+      setPaginationMeta({
+        total: response.data.count, // Use total count from API
+        page,
+        pageSize: response.data.results.length,
+      });
+    } catch (error) {
+      console.error("Erro ao buscar ajudantes:", error);
+    }
+  };
+
+  // Carregar a primeira página ao montar o componente.
+  useEffect(() => {
+    fetchTopAjudantes(1);
+  }, []);
 
   // Função para lidar com a exclusão de um ajudante.
   const handleDelete = async (topAjudantesId: number) => {
     try {
-      // Faz uma solicitação DELETE para a API para excluir o ajudante com o ID fornecido.
       await API.delete(`/topAjudantes/${topAjudantesId}/`);
-      // Atualiza o estado removendo o ajudante excluído da lista.
-      const updatedTopAjudantes = topAjudantes.filter(
-        (topAjudante) => topAjudante.id !== topAjudantesId
+      setTopAjudantes((prev) =>
+        prev.filter((ajudante) => ajudante.id !== topAjudantesId)
       );
-      setTopAjudantes(updatedTopAjudantes);
     } catch (error) {
       console.error("Erro ao deletar ajudante:", error);
     }
   };
 
-  useEffect(() => {
-    API.get(`/topAjudantes/`)
-      .then((response) => {
-        setTopAjudantes(response.data.results);
-      })
-      .catch((error) => {
-        console.error("Erro ao buscar ajudantes:", error);
-      });
-  }, []);
-
   return (
     <div className="top-ajudantes-container">
-      {/* Cabeçalho da lista de ajudantes */}
       <div className="header-ajudantes">
         <div id="title">
           <FaHandsHelping />
           <h1 id="top-ajud">Top Ajudantes</h1>
         </div>
-        {/* Botão para criar um novo Top Ajudante */}
         <Link href="/topAjudantes/create" legacyBehavior>
           <a className="create-button">
             <FaPlus />
@@ -63,7 +79,6 @@ const TopAjudantesList: React.FC = () => {
         </Link>
       </div>
 
-      {/* Lista de ajudantes */}
       <ul className="listagem-ajudantes">
         {topAjudantes.map((topAjudante) => (
           <li key={topAjudante.id} className="ajudante-item">
@@ -104,6 +119,16 @@ const TopAjudantesList: React.FC = () => {
           </li>
         ))}
       </ul>
+
+      <div className="pagination-controls">
+        <Pagination
+          total={Math.ceil(paginationMeta.total / paginationMeta.pageSize)}
+          initialPage={paginationMeta.page} // Set initial page
+          onChange={(page) => fetchTopAjudantes(page)}
+          color="primary"
+          size="md"
+        />
+      </div>
     </div>
   );
 };
