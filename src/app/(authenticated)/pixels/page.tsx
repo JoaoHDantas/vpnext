@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import API from "../../../utils/axios";
+import "../../styles/pixels.css";
 
 interface Pixel {
   id: number;
@@ -45,16 +46,20 @@ export default function PixelList() {
     <div>
       <h1>Lista de Pixels</h1>
       <button onClick={() => router.push("/pixels/create")}>Criar Novo Pixel</button>
-      <ul>
-        {pixels.map((pixel) => (
-          <li key={pixel.id}>
-            <h2>{pixel.titulo}</h2>
-            <p>{pixel.descricao}</p>
-            <button onClick={() => router.push(`/pixels/${pixel.id}`)}>Ver Detalhes</button>
-            <button onClick={() => router.push(`/pixels/${pixel.id}/edit`)}>Editar</button>
-          </li>
-        ))}
-      </ul>
+      <div className="pixelslist">
+        <ul>
+          {pixels.map((pixel) => (
+            <li key={pixel.id}>
+              <h2>{pixel.titulo}</h2>
+              <p>{pixel.descricao}</p>
+              <div>
+                <button onClick={() => router.push(`/pixels/${pixel.id}`)}>Ver Detalhes</button>
+                <button onClick={() => router.push(`/pixels/${pixel.id}/edit`)}>Editar</button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
