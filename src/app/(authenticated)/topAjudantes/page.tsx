@@ -67,16 +67,20 @@ const TopAjudantesList: React.FC = () => {
 
   return (
     <div className="top-ajudantes-container">
-      <div className="header-ajudantes">
-        <div id="title">
-          <FaHandsHelping />
-          <h1 id="top-ajud">Top Ajudantes</h1>
+      <div className="content-header">
+        <div className="header-ajudantes">
+          <div id="title">
+            <FaHandsHelping />
+            <h1 id="top-ajud">Top Ajudantes</h1>
+          </div>
+          <Link href="/topAjudantes/create" legacyBehavior>
+            <a className="create-button">
+              <FaPlus />
+            </a>
+          </Link>
         </div>
-        <Link href="/topAjudantes/create" legacyBehavior>
-          <a className="create-button">
-            <FaPlus />
-          </a>
-        </Link>
+        <div className="divider"></div>
+        
       </div>
 
       <ul className="listagem-ajudantes">
