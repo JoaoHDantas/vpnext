@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap');
+
+
+body{
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(circle, rgb(160 0 0 / 73%) 0%, rgba(15, 25, 35, 1) 68%, rgba(15, 25, 35, 1) 100%);
+}
+.body-div{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    /* padding: 90px 0px; */
+    margin-top: 20px;
+}
+
+.content{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #D9D9D9;
+    box-sizing: border-box;
+    padding: 15px 45px;
+}
+
+.form-creation{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+#title-creation{
+    font-family: 'Inria Sans';
+    width: 60%;
+    margin: 0;
+    box-sizing: border-box;
+    color: #D9D9D9;
+    background-color: #131418;
+    padding: 35px 20px;
+    text-align: center;
+    border-bottom: 7px solid #AE3C56;
+}
+
+.botao-criar{
+    box-sizing: border-box;
+    font-family: 'Inria Sans';
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    padding: 9px;
+    color: white;
+    background-color: #AE3C56;
+    cursor: pointer;
+    border: none;
+    border-bottom: 5px solid #720f26;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: 0.4s ease-in-out;
+    align-self: center;
+    margin-top: 15px;
+}
+.botao-criar:hover{
+    background-color: #720f26;
+}
+
+.inputs-pers{
+    width: 100%;
+    border-radius: 6px;
+    border: none;
+    height: 50px;
+    font-size: 17px;
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: #131418;
+    color: white   ;
+}
+
+.label-form{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.label-form p{
+    font-family: 'Inria Sans';
+    font-size: 18px;
+    font-weight: 900;
+}
+
+#img-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #AE3C56;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 8px;
+    border: #AE3C56;
+    border-bottom: 4px solid #560115;
+    transition: 0.3s ease-in-out;
+    margin-top: 35px;
+}
+
+#img-box input{
+    display: none ;
+}
