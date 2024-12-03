@@ -10,6 +10,7 @@ interface Pixel {
   id: number;
   titulo: string;
   descricao: string;
+  upload: string;
 }
 
 interface PaginationMeta {
@@ -78,8 +79,11 @@ export default function PixelList() {
                 <h2>{pixel.titulo}</h2>
                 <p>{pixel.descricao}</p>
               </a>
-              <div>
+              <div id="list-direita">
                 <button className="botao-criar" onClick={() => router.push(`/pixels/${pixel.id}/edit`)}>Editar</button>
+                <div className="pixellistimg">
+                  <img src={pixel.upload} alt="" />
+                </div>
               </div>
             </li>
           ))}

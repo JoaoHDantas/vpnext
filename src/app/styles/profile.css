@@ -6,9 +6,12 @@
   padding: 0;
 }
 
+body{
+    background: radial-gradient(circle, rgba(160, 0, 0, 1) 0%, rgba(15, 25, 35, 1) 68%, rgba(15, 25, 35, 1) 100%);
+}
+
 .contentdiv{
     margin: 3rem;
-    border: 1px solid #ccc;
     background-color: #d9d9d9;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
