@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { use } from "react"; // Novo import para resolver `params`
 import api from "../../../../utils/axios";
+import "../../../styles/pixels.css";
 
 interface Pixel {
   id: number;
@@ -52,34 +53,43 @@ export default function PixelDetail({ params }: { params: Promise<{ id: string }
     return <p>Erro: Pixel não encontrado ou houve um problema ao carregar os dados.</p>;
 
   return (
-    <div>
-      <h1>Detalhes do Pixel</h1>
-      <h2>{pixel.titulo}</h2>
-      <p>{pixel.descricao}</p>
-      {pixel.upload && (
-        <div>
-          <img src={pixel.upload} alt="" />
+    <div className="main-box">
+      <div className="detail-container">
+          <div className="infosdetail">
+            <div className="infotexto">
+              <h1>Detalhes do Pixel</h1>
+              <h2>{pixel.titulo}</h2>
+              <p>{pixel.descricao}</p>
+            </div>
+            <div className="imagempixel">
+              {pixel.upload && (
+                <div>
+                  <img src={pixel.upload} alt="" />
+                </div>
+              )}
+          </div>
         </div>
-      )}
-      <small>Criado em: {new Date(pixel.created_at).toLocaleDateString()}</small>
-      <div style={{ marginTop: "20px" }}>
-        <button onClick={() => router.push(`/pixels/${resolvedParams.id}/edit`)}>Editar</button>
-        <button
-          onClick={async () => {
-            if (confirm("Você tem certeza que deseja deletar este pixel?")) {
-              try {
-                await api.delete(`/pixels/${resolvedParams.id}/`);
-                alert("Pixel deletado com sucesso!");
-                router.push("/pixels");
-              } catch (err) {
-                console.error("Erro ao deletar o pixel:", err);
-                alert("Erro ao deletar o pixel.");
+        <small>Criado em: {new Date(pixel.created_at).toLocaleDateString()}</small>
+        <div className="botoes-baixo">
+          <button className="botao-criar" onClick={() => router.push(`/pixels/${resolvedParams.id}/edit`)}>Editar</button>
+          <button
+            className="botao-criar"
+            onClick={async () => {
+              if (confirm("Você tem certeza que deseja deletar este pixel?")) {
+                try {
+                  await api.delete(`/pixels/${resolvedParams.id}/`);
+                  alert("Pixel deletado com sucesso!");
+                  router.push("/pixels");
+                } catch (err) {
+                  console.error("Erro ao deletar o pixel:", err);
+                  alert("Erro ao deletar o pixel.");
+                }
               }
-            }
-          }}
-        >
-          Deletar
-        </button>
+            }}
+            >
+            Deletar
+          </button>
+        </div>
       </div>
     </div>
   );
