@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { use } from "react"; // Novo import para resolver `params`
 import API from "../../../../../utils/axios";
+import "../../../../styles/pixels.css";
 
 interface Pixel {
   titulo: string;
@@ -68,37 +69,42 @@ export default function EditPixel({ params }: { params: Promise<{ id: string }> 
   }
 
   return (
-    <div>
-      <h1>Editar Pixel</h1>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleSave();
-        }}
-      >
-        <label>
-          Título:
-          <input
-            type="text"
-            value={pixel.titulo}
-            onChange={(e) => setPixel({ ...pixel, titulo: e.target.value })}
-            required
-          />
-        </label>
-        <br />
-        <label>
-          Descrição:
-          <textarea
-            value={pixel.descricao}
-            onChange={(e) => setPixel({ ...pixel, descricao: e.target.value })}
-            required
-          />
-        </label>
-        <br />
-        <button type="submit" disabled={saving}>
-          {saving ? "Salvando..." : "Salvar"}
-        </button>
-      </form>
+    <div className="main-box"> 
+      <div className="pixelcreatebox">
+        <h1>Editar Pixel</h1>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSave();
+          }}
+          className="form-creation"
+          >
+          <label className="label-form">
+            Título:
+            <input
+              type="text"
+              value={pixel.titulo}
+              onChange={(e) => setPixel({ ...pixel, titulo: e.target.value })}
+              required
+              className="inputs-pers"
+              />
+          </label>
+          <br />
+          <label className="label-form">
+            Descrição:
+            <textarea
+              value={pixel.descricao}
+              onChange={(e) => setPixel({ ...pixel, descricao: e.target.value })}
+              required
+              className="inputs-pers"
+              />
+          </label>
+          <br />
+          <button type="submit" disabled={saving} className="botao-criar">
+            {saving ? "Salvando..." : "Salvar"}
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
