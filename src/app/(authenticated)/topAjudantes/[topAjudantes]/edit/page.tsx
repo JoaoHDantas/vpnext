@@ -132,7 +132,7 @@ const EditTopAjudante: React.FC = () => {
                 Salvar
               </button>
 
-              <button type="button" className="botao-criar" onClick={() => router.push("/topAjudantes")}>
+              <button id="voltar" type="button" className="botao-criar" onClick={() => router.push("/topAjudantes")}>
                 Voltar
               </button>
             </div>
