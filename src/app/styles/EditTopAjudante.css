@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap');
+
+
+body{
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(circle, rgb(160 0 0 / 73%) 0%, rgba(15, 25, 35, 1) 68%, rgba(15, 25, 35, 1) 100%);
+}
+
+.ajudante-image{
+    width: 110px;
+    height: 110px;
+    border-radius: 90px;
+}
+
+.div-img{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.div-botoes{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.inputs-pers {
+    width: 80%;
+    border-radius: 6px;
+    border: none;
+    height: 60px;
+    font-size: 17px;
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: #131418;
+    color: white;
+}
+
+#spacing-input{
+    margin-top: 40px;
+}
+
+.content{
+    padding: 30px 20px;
+}
+
+.form-creation{
+    gap: 20px;
+}
+
+#img-box{
+    margin-top: 10px;
+    padding: 5px 1px;
+}
+
+#img-box:hover{
+    background-color: #720a23;
+}
