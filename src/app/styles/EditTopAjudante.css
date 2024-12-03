@@ -11,7 +11,7 @@ body{
 .ajudante-image{
     width: 110px;
     height: 110px;
-    border-radius: 90px;
+    border-radius: 200px;
 }
 
 .div-img{
@@ -44,6 +44,7 @@ body{
 
 .content{
     padding: 30px 20px;
+    margin-bottom: 50px;
 }
 
 .form-creation{
