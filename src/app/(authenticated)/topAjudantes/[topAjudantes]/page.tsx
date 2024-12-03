@@ -47,38 +47,44 @@ const ReadTopAjudante: React.FC = () => {
   return (
     <div className="read-ajudante-container">
       <div id="headerDetail">
-          <h1><FaStreetView />Detalhes do ajudante</h1>
-          <div id="bottom-linha"></div>
-        </div>
+        <h1><FaStreetView />Detalhes do ajudante</h1>
+        <div id="bottom-linha"></div>
+      </div>
       <div className="content-container">
         <div id="bg-nick">
           <h2>{nicknameAjudante}</h2>
         </div>
-        
-        <p>Pontos: {postPoints ?? 0}</p>
-        {profilePicture ? (
-          <img
-            src={profilePicture}
-            alt={nicknameAjudante}
-            className="ajudante-image"
-          />
-        ) : (
-          <div className="placeholder-picture">Sem Foto</div>
-        )}
-        <button
-          type="button"
-          className="back-button"
-          onClick={() => router.push("/topAjudantes")}
-        >
-          Voltar para Listagem
-        </button>
-        <button
-          type="button"
-          className="back-button"
-          onClick={() => router.push(`/topAjudantes/${topAjudantesId}/edit`)}
-        >
-          Editar Ajudante
-        </button>
+        <div id="mid-content">
+          {profilePicture ? (
+            <img
+              src={profilePicture}
+              alt={nicknameAjudante}
+              className="ajudante-image"
+            />
+          ) : (
+            <div className="placeholder-picture">Sem Foto</div>
+          )}
+
+          <div className="stats-ajud">
+            <p>Reputação: <span>{postPoints ?? 0}</span></p>
+            <p>Frase: <span>"Victory will shine upon us"</span></p>
+          </div>
+
+          <div className="rank-ajud">
+            <p>Ranking: Ouro</p>
+            <img src="/ouro.png" alt="" id="img-rank"/>
+          </div>
+
+        </div>
+        <div id="botoes-baixo">
+          <button type="button" className="back-button" onClick={() => router.push("/topAjudantes")}>
+            Voltar para Listagem
+          </button>
+          <button type="button" className="back-button" onClick={() => router.push(`/topAjudantes/${topAjudantesId}/edit`)}>
+            Editar Ajudante
+          </button>
+        </div>
+
       </div>
 
     </div>

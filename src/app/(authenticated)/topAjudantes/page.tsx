@@ -98,7 +98,7 @@ const TopAjudantesList: React.FC = () => {
                     {topAjudante.nicknameAjudante}
                   </span>
                   <span className="ajudante-points">
-                    Pontos: {topAjudante.postPoints ?? 0}
+                    Reputação: {topAjudante.postPoints ?? 0}
                   </span>
                 </div>
               </a>
