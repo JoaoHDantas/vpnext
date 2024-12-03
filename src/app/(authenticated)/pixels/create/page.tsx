@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import API from "../../../../utils/axios";
+import "../../../styles/pixels.css";
+import { div } from "framer-motion/client";
 
 export default function CreatePixel() {
   const [titulo, setTitulo] = useState("");
@@ -42,46 +44,49 @@ export default function CreatePixel() {
   };
 
   return (
-    <div>
-      <h1>Criar Novo Pixel</h1>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          handleSave();
-        }}
-      >
-        <label>
-          Título:
-          <input
-            type="text"
-            value={titulo}
-            onChange={(e) => setTitulo(e.target.value)}
-            required
-          />
-        </label>
-        <br />
-        <label>
-          Descrição:
-          <textarea
-            value={descricao}
-            onChange={(e) => setDescricao(e.target.value)}
-            required
-          />
-        </label>
-        <br />
-        <label>
-          Upload:
-          <input
-            type="file"
-            onChange={(e) => setUpload(e.target.files ? e.target.files[0] : null)}
-          />
-        </label>
-        <br />
-        <button type="submit" disabled={saving}>
-          {saving ? "Criando..." : "Criar"}
-        </button>
-        {error && <p style={{ color: "red" }}>Erro ao criar o Pixel. Tente novamente.</p>}
-      </form>
+    <div className="main-box">
+
+      <div className="pixelcreatebox">
+        <h1>Criar Novo Pixel</h1>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSave();
+          }}
+          >
+          <label>
+            Título:
+            <input
+              type="text"
+              value={titulo}
+              onChange={(e) => setTitulo(e.target.value)}
+              required
+              />
+          </label>
+          <br />
+          <label>
+            Descrição:
+            <textarea
+              value={descricao}
+              onChange={(e) => setDescricao(e.target.value)}
+              required
+              />
+          </label>
+          <br />
+          <label>
+            Upload:
+            <input
+              type="file"
+              onChange={(e) => setUpload(e.target.files ? e.target.files[0] : null)}
+              />
+          </label>
+          <br />
+          <button type="submit" disabled={saving}>
+            {saving ? "Criando..." : "Criar"}
+          </button>
+          {error && <p style={{ color: "red" }}>Erro ao criar o Pixel. Tente novamente.</p>}
+        </form>
+      </div>
     </div>
   );
 }

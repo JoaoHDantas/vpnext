@@ -49,3 +49,14 @@ body{
     border: 2px solid #ff0024;
 }
 
+.main-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.pixelcreatebox{
+    margin: 3rem;
+}
+
