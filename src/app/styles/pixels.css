@@ -1,7 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+  font-family: 'Inria Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+    background: radial-gradient(circle, rgba(160, 0, 0, 1) 0%, rgba(15, 25, 35, 1) 68%, rgba(15, 25, 35, 1) 100%);
+}
+
+
 .post-item{
-    color: black;
+    color: rgb(255, 255, 255);
 }
 
 .post-link-name{
     color: black;
+}
+
+#pixelcreatebutton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    color: white;
+}
+#pixelcreatebutton h2{
+    margin-right: 0.5rem;
+}
+
+
+.pixelslist{
+    margin: 1rem 3rem 3rem 3rem;
+    color: white;
+}
+
+.pixelslist li{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0px 20px 0px 20px;
+    margin-bottom: 1rem;
+    background-color: #0f141a;
+    color: white;
+    height: 6rem;
+    border: 2px solid #ff0024;
+}
+
+.main-box{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    /* padding: 90px 0px; */
+    margin-top: 20px;
+}
+
+.pixelcreatebox{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #D9D9D9;
+    box-sizing: border-box;
+    padding: 15px 45px;
+    border: 2px solid #ff0024;
+}
+.label-form{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+#img-box{
+    display: flex;
+    height: 3rem;
+    align-items: center;
+    justify-content: center;
+    background-color: #AE3C56;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 8px;
+    border: #AE3C56;
+    border-bottom: 4px solid #560115;
+    transition: 0.3s ease-in-out;
+
+}
+
+#img-box input{
+    display: none ;
+}
+.form-creation{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+.botao-criar{
+    box-sizing: border-box;
+    font-family: 'Inria Sans';
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    padding: 9px;
+    color: white;
+    background-color: #AE3C56;
+    cursor: pointer;
+    border: none;
+    border-bottom: 5px solid #720f26;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: 0.4s ease-in-out;
+    align-self: center;
+}
+.botao-criar:hover{
+    background-color: #720f26;
+}
+
+.inputs-pers{
+    width: 100%;
+    border-radius: 6px;
+    border: none;
+    height: 50px;
+    font-size: 17px;
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: #131418;
+    color: white   ;
+    resize: none;
 }
