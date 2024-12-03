@@ -19,8 +19,21 @@ body{
     color: black;
 }
 
+#pixelcreatebutton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    color: white;
+}
+#pixelcreatebutton h2{
+    margin-right: 0.5rem;
+}
+
+
 .pixelslist{
-    margin: 3rem;
+    margin: 1rem 3rem 3rem 3rem;
+    color: white;
 }
 
 .pixelslist li{
@@ -33,6 +46,6 @@ body{
     background-color: #0f141a;
     color: white;
     height: 6rem;
-    border: 3px solid #ff0024;
+    border: 2px solid #ff0024;
 }
 

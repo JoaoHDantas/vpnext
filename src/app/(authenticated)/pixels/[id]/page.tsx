@@ -58,9 +58,7 @@ export default function PixelDetail({ params }: { params: Promise<{ id: string }
       <p>{pixel.descricao}</p>
       {pixel.upload && (
         <div>
-          <a href={pixel.upload} download>
-            Baixar Upload
-          </a>
+          <img src={pixel.upload} alt="" />
         </div>
       )}
       <small>Criado em: {new Date(pixel.created_at).toLocaleDateString()}</small>

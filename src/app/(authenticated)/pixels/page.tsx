@@ -44,9 +44,12 @@ export default function PixelList() {
 
   return (
     <div>
-      <h1>Lista de Pixels</h1>
-      <button onClick={() => router.push("/pixels/create")}>Criar Novo Pixel</button>
+      <div id="pixelcreatebutton">
+        <h2>Crie um novo pixel aqui:</h2>
+        <button onClick={() => router.push("/pixels/create")}>Criar Novo Pixel</button>
+      </div>
       <div className="pixelslist">
+      <h1>Lista de Pixels</h1>
         <ul>
           {pixels.map((pixel) => (
             <li key={pixel.id}>
