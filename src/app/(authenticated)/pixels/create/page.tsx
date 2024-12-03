@@ -53,35 +53,39 @@ export default function CreatePixel() {
             e.preventDefault();
             handleSave();
           }}
+          className="form-creation"
           >
-          <label>
+          <label className="label-form">
             Título:
             <input
               type="text"
               value={titulo}
               onChange={(e) => setTitulo(e.target.value)}
               required
+              className="inputs-pers"
               />
           </label>
           <br />
-          <label>
+          <label className="label-form">
             Descrição:
             <textarea
               value={descricao}
               onChange={(e) => setDescricao(e.target.value)}
               required
+              className="inputs-pers"
               />
           </label>
           <br />
-          <label>
+          <label className="label-form" id="img-box">
             Upload:
             <input
               type="file"
               onChange={(e) => setUpload(e.target.files ? e.target.files[0] : null)}
+              className="inputs-pers"
               />
           </label>
           <br />
-          <button type="submit" disabled={saving}>
+          <button type="submit" disabled={saving} className="botao-criar">
             {saving ? "Criando..." : "Criar"}
           </button>
           {error && <p style={{ color: "red" }}>Erro ao criar o Pixel. Tente novamente.</p>}
