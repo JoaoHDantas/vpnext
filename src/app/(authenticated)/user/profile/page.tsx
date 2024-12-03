@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import API from '../../../../utils/axios';
+import "../../../styles/profile.css";
 
 type UserProfile = {
   id: number;
@@ -124,52 +125,76 @@ export default function ProfilePage() {
 
   return (
     <div>
-      <h1>Login name: {user.username}</h1>
-      <h1>{profile?.nickname || user.username}</h1>
-      <p>Email: {user.email}</p>
-      <p>Descrição: {profile?.description || 'Sem descrição'}</p>
-      {profile?.image && (
-        <img
-          src={`http://localhost:8000/media/${profile.image}`}
-          alt={`${user.username} profile`}
-          style={{ width: '150px', height: '150px', borderRadius: '50%' }}
-        />
-      )}
-      <button onClick={() => setEditing(!editing)}>
-        {editing ? 'Cancelar' : 'Editar Perfil'}
-      </button>
-      {editing && (
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>
-              Apelido:
-              <input
-                type="text"
-                name="nickname"
-                value={formData.nickname}
-                onChange={handleInputChange}
-              />
-            </label>
+      <div className='contentdiv'>
+        <div className='infotopbar'>
+          {profile?.image && (
+            <img
+            src={`${profile.image}`}
+            alt={`${user.username} profile`}
+            className='profileimage'
+            />
+          )}
+            {editing && (
+              <form onSubmit={handleSubmit}>
+              <div className="editingimg">
+                <label>
+                  Imagem:
+                </label>
+                <div className='imagembox'>
+                  <p>Adicione uma imagem nova para seu perfil</p>
+                  <input type="file" name="image" onChange={handleFileChange} />
+                </div>
+              </div>
+            </form>
+            )}
+          <h3>User: {user.username}</h3>
+        </div>
+        <div className='infoperfil'>
+          <div className='borderbottom'><h3>Nickname: {profile?.nickname || user.username}</h3>
+            {editing && (
+              <form onSubmit={handleSubmit}>
+                <div>
+                  <label>
+                    Apelido:
+                    <input
+                      type="text"
+                      name="nickname"
+                      value={formData.nickname}
+                      onChange={handleInputChange}
+                      />
+                  </label>
+                </div>
+              </form>
+            )}
           </div>
-          <div>
-            <label>
-              Descrição:
-              <textarea
-                name="description"
-                value={formData.description}
-                onChange={handleInputChange}
-              />
-            </label>
+          <div className='borderbottom'><h3>Email: {user.email}</h3></div>
+          <div className='borderbottom'><h3>Descrição: {profile?.description || 'Sem descrição'}</h3>
+            {editing && (
+              <form onSubmit={handleSubmit}>
+                <div>
+                  <label className='inputedit'>
+                    Descrição:
+                    <textarea
+                      name="description"
+                      value={formData.description}
+                      onChange={handleInputChange}
+                      className='no-resize'
+                      />
+                  </label>
+                </div>
+              </form>
+            )}
           </div>
-          <div>
-            <label>
-              Imagem:
-              <input type="file" name="image" onChange={handleFileChange} />
-            </label>
-          </div>
-          <button type="submit">Salvar</button>
-        </form>
-      )}
+        </div>
+        <div id='botoes'>
+          <button onClick={() => setEditing(!editing)} id='botaoeditar'>
+            {editing ? 'Cancelar' : 'Editar Perfil'}
+          </button>
+          <form onSubmit={handleSubmit}>
+            {editing && (<button type="submit" id='botaoeditar'>Salvar</button>)}
+          </form>
+        </div>
+      </div>
     </div>
   );
 }
