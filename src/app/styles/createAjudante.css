@@ -114,3 +114,17 @@ body{
 #img-box input{
     display: none ;
 }
+
+#div-botoes{
+    display: flex;
+    gap: 20px;
+}
+
+#voltar{
+    background-color: #949494;
+    border-bottom: 4px solid #252525;
+}
+
+#voltar:hover{
+    background-color: #343434;
+}

@@ -55,27 +55,33 @@ export default function CreateTopAjudante() {
     <>
       <div className="body-div">
         <h1 id="title-creation">Adicione um ajudante</h1>
-        <div className="content"> 
-          <form onSubmit={(e) => {e.preventDefault(); handleSave();}} className="form-creation">
+        <div className="content">
+          <form onSubmit={(e) => { e.preventDefault(); handleSave(); }} className="form-creation">
             <label className="label-form">
               <p>Nickname</p>
-              <input className="inputs-pers" type="text" value={nicknameAjudante} onChange={(e) => setNicknameAjudante(e.target.value)} required/>
+              <input className="inputs-pers" type="text" value={nicknameAjudante} onChange={(e) => setNicknameAjudante(e.target.value)} required />
             </label>
-            
+
             <label className="label-form">
               <p>Pontos</p>
-              <input  type="number" value={postPoints || ""} onChange={(e) => setPostPoints(Number(e.target.value))} required  className="inputs-pers"/>
+              <input type="number" value={postPoints || ""} onChange={(e) => setPostPoints(Number(e.target.value))} required className="inputs-pers" />
             </label>
-            
+
             <label className="label-form" id="img-box">
               <p>Adicionar foto de perfil</p>
-              <input type="file" accept="image/*" onChange={(e) => setProfilePicture(e.target.files ? e.target.files[0] : null)}/>
+              <input type="file" accept="image/*" onChange={(e) => setProfilePicture(e.target.files ? e.target.files[0] : null)} />
             </label>
-            
-            <button type="submit" disabled={saving} className="botao-criar">
-              {saving ? "Criando..." : "Criar"}
-            </button>
-              {error && <p style={{ color: "red" }}>Erro ao criar o Top Ajudante. Tente novamente.</p>}
+
+            <div id="div-botoes">
+              <button type="submit" disabled={saving} className="botao-criar">
+                {saving ? "Criando..." : "Criar"}
+              </button>
+
+              <button id="voltar" type="button" className="botao-criar" onClick={() => router.push("/topAjudantes")}>
+                Voltar
+              </button>
+            </div>
+            {error && <p style={{ color: "red" }}>Erro ao criar o Top Ajudante. Tente novamente.</p>}
           </form>
         </div>
 

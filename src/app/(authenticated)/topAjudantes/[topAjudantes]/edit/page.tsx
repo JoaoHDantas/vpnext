@@ -3,7 +3,9 @@
 import { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 import API from "../../../../../utils/axios";
+import "../../../../styles/createAjudante.css"
 import "../../../../styles/EditTopAjudante.css";
+import { MdEdit } from "react-icons/md";
 
 // Define a interface para o tipo TopAjudantes.
 interface TopAjudantes {
@@ -99,48 +101,46 @@ const EditTopAjudante: React.FC = () => {
     );
 
   return (
-    <div className="edit-ajudante-container">
-      <h1>Editar Ajudante</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          {/* Exibe a imagem atual do ajudante, se disponível. */}
-          {currentPicture ? (
-            <img
-              src={currentPicture}
-              alt="Imagem do Ajudante"
-              className="ajudante-image"
-            />
-          ) : (
-            <div className="placeholder-picture">Sem Foto</div>
-          )}
-          <input type="file" accept="image/*" onChange={handleImageChange} />
+    <>
+      <div className="body-div">
+        <h1 id="title-creation">Editar Ajudante</h1>
+        <div className="content">
+
+          <form onSubmit={handleSubmit} className="form-creation">
+            <div className="div-img">
+              {/* Exibe a imagem atual do ajudante, se disponível. */}
+              {currentPicture ? (
+                <img src={currentPicture} alt="Imagem do Ajudante" className="ajudante-image" />
+              ) : (
+                <div className="placeholder-picture">Sem Foto</div>
+              )}
+
+              <label className="label-form" id="img-box">
+                <MdEdit  />
+                <input type="file" accept="image/*" onChange={handleImageChange} />
+              </label>
+
+
+
+
+            </div>
+            <input id="spacing-input" className="inputs-pers" type="text" placeholder="Nickname" value={nicknameAjudante} onChange={(e) => setNicknameAjudante(e.target.value)} required />
+            <input className="inputs-pers" type="number" placeholder="Pontos" value={postPoints || ""} onChange={(e) => setPostPoints(Number(e.target.value))} required />
+
+            <div className="div-botoes">
+              <button className="botao-criar" type="submit">
+                Salvar
+              </button>
+
+              <button id="voltar" type="button" className="botao-criar" onClick={() => router.push("/topAjudantes")}>
+                Voltar
+              </button>
+            </div>
+
+          </form>
         </div>
-        <input
-          type="text"
-          placeholder="Nickname"
-          value={nicknameAjudante}
-          onChange={(e) => setNicknameAjudante(e.target.value)}
-          required
-        />
-        <input
-          type="number"
-          placeholder="Pontos"
-          value={postPoints || ""}
-          onChange={(e) => setPostPoints(Number(e.target.value))}
-          required
-        />
-        <button className="save-button" type="submit">
-          Salvar
-        </button>
-        <button
-          type="button"
-          className="back-button"
-          onClick={() => router.push("/topAjudantes")}
-        >
-          Voltar para Listagem
-        </button>
-      </form>
-    </div>
+      </div>
+    </>
   );
 };
 
